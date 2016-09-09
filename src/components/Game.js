@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Cup from './Cup'
 import Well from './Well'
+import white from '../images/white-tag.svg'
+import red from '../images/red-tag.svg'
+import none from '../images/no-tag.svg'
 const GAME_URL = 'https://sensei-sense-api.herokuapp.com/'
 const TOKEN = 'access_token=brett'
 const CUPS = [0, 1, 2, 3]
@@ -57,7 +60,19 @@ class Game extends Component {
           {prevTurn.guess.map((guess, j) =>
             <Cup color={guess} key={j} />)}
           <div className='pegs'>
-            {prevTurn.result.map((result, k) => <p key={k}>{result}</p>)}
+            {prevTurn.result.map((result, k) => {
+              let token
+              switch (result) {
+                case 'exact_match': token = <img src={red} alt='peg' />
+                  break
+                case 'inexact_match': token = <img src={white} alt='peg' />
+                  break
+                case 'miss': token = <img className='miss' src={none} alt='peg' />
+                  break
+                default: token = <img src={none} alt='peg' />
+              }
+              return <div className='peg' key={k}>{token}</div>
+            })}
           </div>
         </div> })}
       </div>

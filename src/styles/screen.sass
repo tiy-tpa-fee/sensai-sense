@@ -176,6 +176,20 @@ $sprite-size: 16vw
       filter: brightness(120%)
 
   .pegs
+    display: flex
+    flex-wrap: wrap
+    .peg
+      height: 50%
+      width: 50%
+    img
+      height: 8vw
+      width:
+      &.miss
+        height: 1.8vw
+        padding-top: 5px
+        margin: 0 10px
+
+
 
   .go
     button
