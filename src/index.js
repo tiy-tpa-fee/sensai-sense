@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, browserHistory } from 'react-router'
 import { App, Game, Leaderboard, Title } from './components'
+import './styles/screen.sass'
 
 const router = <Router history={browserHistory}>
   <Route component={App}>
