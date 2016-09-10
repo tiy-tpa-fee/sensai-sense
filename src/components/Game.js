@@ -9,15 +9,19 @@ const COLORS = ['green', 'aqua', 'fuschia', 'blueberry', 'fire', 'coal']
 class Game extends Component {
   constructor () {
     super()
+    let scores = window.localStorage.scoreArray ? JSON.parse(window.localStorage.getItem('scoreArray')) : []
     this.state = {
       id: 0,
       moves: [],
       currentMove: [],
-      won: false
+      won: false,
+      numGuesses: 0,
+      leaderScores: scores
     }
   }
 
   componentWillMount () {
+    console.log(this.state.leaderScores, window.localStorage.scoreArray)
     window.fetch(`${GAME_URL}games?${TOKEN}`, { method: 'POST' })
     .then(resp => resp.json())
     .then(json => this.setState({
@@ -27,7 +31,7 @@ class Game extends Component {
   }
 
   receiveColor = (color, index) => {
-    const currMove = this.state.currentMove
+    const currMove = this.state.currentMove.slice()
     currMove[index] = color
     this.setState({
       currentMove: currMove
@@ -35,6 +39,7 @@ class Game extends Component {
   }
 
   makeMove = () => {
+    this.setState({numGuesses: this.state.numGuesses + 1})
     window.fetch(`${GAME_URL}games/move?${TOKEN}&game_id=${this.state.id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -48,11 +53,18 @@ class Game extends Component {
       currentMove: []
     }, () => {
       const { moves } = this.state
-      let last = moves.length - 1
-      console.log(last, moves, moves[last])
-      const matches = moves[last].result.filter((result) => result === 'exact_match')
-      console.log('Matches', matches)
-      if (matches.length === 4) { this.setState({ won: true }) }
+      const matches = moves[moves.length - 1].result.filter((result) => result === 'exact_match')
+      if (matches.length === 4) {
+        let currScore = this.state.leaderScores.slice()
+        currScore.push(this.state.numGuesses)
+        this.setState({
+          won: true,
+          leaderScores: currScore
+        }, () => {
+          let newScores = JSON.stringify(this.state.leaderScores)
+          window.localStorage.setItem('scoreArray', newScores)
+        })
+      }
     }))
   }
   reset () {
@@ -61,6 +73,7 @@ class Game extends Component {
   render () {
     const { moves, currentMove, won } = this.state
     return <div className='game'>
+      <div className='score'><p>Guesses: {this.state.numGuesses}</p></div>
       <div className={`modal-${won}`}>
         <h2>YOU WIN!</h2>
         <button className='reset' onClick={this.reset}>PLAY AGAIN</button>

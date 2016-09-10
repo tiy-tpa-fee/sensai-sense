@@ -150,7 +150,7 @@ $sprite-size: 16vw
     align-items: center
     justify-content: center
     width: 80vw
-    height: 1000vh
+    height: 100000vh
     text-align: center
     font-size: 4em
     background-color: darken($orange, 20%)
@@ -260,7 +260,8 @@ $sprite-size: 16vw
     flex-direction: row
     flex-wrap: wrap
     align-items: flex-end
-    overflow-y: auto
+    overflow-y: auto hidden
+    overflow-x: hidden
 
   .current
     background-color: $orange
@@ -319,3 +320,10 @@ $sprite-size: 16vw
     a
       text-decoration: none
       color: $beige
+
+.score
+  font-size: 2em
+  font-weight: bold
+  font-family: fantasy
+  margin-left: 3vw
+  text-align: center
