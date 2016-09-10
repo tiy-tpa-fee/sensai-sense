@@ -79,7 +79,7 @@ class Game extends Component {
             color={currentMove[i]}
             key={i} />)}
         <div className='go'>
-          <button onClick={this.makeMove}>Go</button>
+          <button onClick={this.makeMove}>Confirm Move</button>
         </div>
       </div>
       <div className='color-well'>

@@ -144,6 +144,7 @@ $sprite-size: 16vw
   .turn
     display: flex
     flex-direction: row
+    align-items: center
 
   .cup, .pegs, .go
     width: 20vw
@@ -178,11 +179,14 @@ $sprite-size: 16vw
   .pegs
     display: flex
     flex-wrap: wrap
+    height: 10vh
+    width: 10vh
     background-image: url('https://wallpaperscraft.com/image/wood_background_texture_36573_2560x1600.jpg')
     background-position: center
     background-size: cover
     border-radius: 10px
     margin: 3px
+
     .exact_match
       background-image: url('../images/white-tag.svg')
       background-repeat: no-repeat
@@ -190,6 +194,7 @@ $sprite-size: 16vw
       background-size: auto
       height: 50%
       width: 50%
+
     .inexact_match
       background-image: url('../images/red-tag.svg')
       background-repeat: no-repeat
@@ -197,6 +202,7 @@ $sprite-size: 16vw
       background-size: auto
       height: 50%
       width: 50%
+
     .miss
       background-image: url('../images/no-tag.svg')
       background-repeat: no-repeat
@@ -205,21 +211,28 @@ $sprite-size: 16vw
       height: 50%
       width: 50%
 
-
-
-
-
   .go
     button
       display: block
       width: 100%
       height: 100%
+      background-image: url('https://pbs.twimg.com/profile_images/1406198787/logo-symbol-stone2_400x400.png')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: contain
+      border-radius: 125px
+      font-size: 4vw
+      font-weight: bold
+      font-family: cursive
+      text-shadow: 2px 2px 2px $beige
+      outline: none
 
   .previous
     flex: 1 1 auto
     display: flex
-    flex-direction: column
-    justify-content: flex-end
+    flex-direction: row
+    flex-wrap: wrap
+    align-items: flex-end
     overflow-y: auto
 
   .current
@@ -237,3 +250,45 @@ $sprite-size: 16vw
 
     .color
       animation-name: color-active
+
+.title
+  text-align: center
+  width: 66vw
+  margin: 0 auto
+
+  .white
+    color: white
+    text-shadow: 2px 2px 2px black
+    font-weight: bold
+    font-size: 1.5em
+
+    .small-white-tag
+      background-image: url('../images/white-tag.svg')
+      background-position: center
+      background-repeat: no-repeat
+      width: 30px
+      height: 30px
+      display: inline-block
+
+
+  .red
+    color: red
+    text-shadow: 2px 2px 2px black
+    font-weight: bold
+    font-size: 1.5em
+
+    .small-red-tag
+      background-image: url('../images/red-tag.svg')
+      background-position: center
+      background-repeat: no-repeat
+      width: 30px
+      height: 30px
+      display: inline-block
+
+  .play-button
+    border-radius: 10px
+    background-color: darken($orange, 20%)
+    font-size: 2em
+    a
+      text-decoration: none
+      color: $beige
