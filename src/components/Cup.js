@@ -46,7 +46,7 @@ class Cup extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    this.setState({color: nextProps.color}, () => console.log('green'))
+    this.setState({color: nextProps.color})
   }
 
   render () {

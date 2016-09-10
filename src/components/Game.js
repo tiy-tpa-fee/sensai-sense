@@ -55,12 +55,15 @@ class Game extends Component {
       if (matches.length === 4) { this.setState({ won: true }) }
     }))
   }
-
+  reset () {
+    window.location.reload()
+  }
   render () {
     const { moves, currentMove, won } = this.state
     return <div className='game'>
       <div className={`modal-${won}`}>
         <h2>YOU WIN!</h2>
+        <button className='reset' onClick={this.reset}>PLAY AGAIN</button>
       </div>
       <div className='previous'>
       {moves.map((prevTurn, i) => {
