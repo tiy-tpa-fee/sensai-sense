@@ -178,16 +178,34 @@ $sprite-size: 16vw
   .pegs
     display: flex
     flex-wrap: wrap
-    .peg
+    background-image: url('https://wallpaperscraft.com/image/wood_background_texture_36573_2560x1600.jpg')
+    background-position: center
+    background-size: cover
+    border-radius: 10px
+    margin: 3px
+    .exact_match
+      background-image: url('../images/white-tag.svg')
+      background-repeat: no-repeat
+      background-position: center
+      background-size: auto
       height: 50%
       width: 50%
-    img
-      height: 8vw
-      width:
-      &.miss
-        height: 1.8vw
-        padding-top: 5px
-        margin: 0 10px
+    .inexact_match
+      background-image: url('../images/red-tag.svg')
+      background-repeat: no-repeat
+      background-position: center
+      background-size: auto
+      height: 50%
+      width: 50%
+    .miss
+      background-image: url('../images/no-tag.svg')
+      background-repeat: no-repeat
+      background-position: top center
+      background-size: 1.45vw 2.5vw
+      height: 50%
+      width: 50%
+
+
 
 
 
