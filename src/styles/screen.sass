@@ -141,6 +141,25 @@ $sprite-size: 16vw
   display: flex
   flex-direction: column
 
+  .modal-false
+    display: none
+
+  .modal-true
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100vw
+    height: 1000vh
+    text-align: center
+    font-size: 4em
+    background-color: darken($orange, 20%)
+    color: black
+    text-shadow: 5px 5px 5px $beige
+    box-shadow: 5px 5px 5px black
+    transition: 1s ease-in
+    border-radius: 10px
+    margin: 100px auto
+
   .turn
     display: flex
     flex-direction: row

@@ -12,7 +12,8 @@ class Game extends Component {
     this.state = {
       id: 0,
       moves: [],
-      currentMove: []
+      currentMove: [],
+      won: false
     }
   }
 
@@ -51,13 +52,16 @@ class Game extends Component {
       console.log(last, moves, moves[last])
       const matches = moves[last].result.filter((result) => result === 'exact_match')
       console.log('Matches', matches)
-      if (matches.length === 4) { window.alert('You Win') }
+      if (matches.length === 4) { this.setState({ won: true }) }
     }))
   }
 
   render () {
-    const { moves, currentMove } = this.state
+    const { moves, currentMove, won } = this.state
     return <div className='game'>
+      <div className={`modal-${won}`}>
+        <h2>YOU WIN!</h2>
+      </div>
       <div className='previous'>
       {moves.map((prevTurn, i) => {
         return <div className='turn' key={i}>
