@@ -51,7 +51,7 @@ class Game extends Component {
       console.log(last, moves, moves[last])
       const matches = moves[last].result.filter((result) => result === 'exact_match')
       console.log('Matches', matches)
-      if (matches.length === 4) { console.log('You Win') }
+      if (matches.length === 4) { window.alert('You Win') }
     }))
   }
 
