@@ -12,6 +12,7 @@ export default () => {
     <p>A <span className='red'>RED TOKEN<div className='small-red-tag' /></span> means that one of the jewels' color is correct, but in the wrong position. A <span className='white'>WHITE TOKEN<div className='small-white-tag' /></span> means that one of the jewels is both the correct hue and at the correct position.</p>
     <p>When you have all <span className='white'>WHITE TOKENS</span> you have won the game!</p>
 
-    <button className='play-button'><Link to='/game'>PLAY!</Link></button>
+    <button className='play-button'><Link to='/game'>PLAY!</Link></button><br />
+    <button className='leader-link'><Link to='/scores'>LeaderBoard</Link></button>
   </div>
 }

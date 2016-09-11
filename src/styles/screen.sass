@@ -313,10 +313,11 @@ $sprite-size: 16vw
       height: 30px
       display: inline-block
 
-  .play-button
+  .play-button, .leader-link
     border-radius: 10px
     background-color: darken($orange, 20%)
     font-size: 2em
+    margin: 10px auto
     a
       text-decoration: none
       color: $beige
@@ -327,3 +328,25 @@ $sprite-size: 16vw
   font-family: fantasy
   margin-left: 3vw
   text-align: center
+
+.leader
+  display: flex
+  flex-direction: column
+  text-align: center
+  h2
+    font-size: 3em
+
+.scores
+  margin: 10px
+  font-size: 3em
+
+.title-return
+  border-radius: 10px
+  background-color: darken($orange, 20%)
+  font-size: 2em
+  width: 20vw
+  height: auto
+  margin: 10px auto
+  a
+    text-decoration: none
+    color: $beige
