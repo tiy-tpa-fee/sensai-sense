@@ -4,7 +4,7 @@ import '../styles/screen.sass'
 class App extends Component {
 
   static propTypes = {
-    children: React.PropTypes.node
+    children: React.PropTypes.node.isRequired
   }
 
   render () {
