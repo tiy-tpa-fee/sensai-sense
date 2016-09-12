@@ -4,6 +4,18 @@ import { Cup, Well } from '.'
 
 class Game extends React.Component {
 
+  componentDidMount () {
+    window.fetch(`https://sensei-sense-api.herokuapp.com/games?access_token=pickles`, {
+      method: 'POST'
+    }).then((response) => response.json())
+    .then((data) => {
+      this.setState({
+        id: data.id,
+        moves: data.moves
+      })
+    })
+  }
+
   render () {
     return <div className='game'>
       <div className='previous'>
