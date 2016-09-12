@@ -7,6 +7,6 @@ export default () => {
 
     <p>TODO: Describe how to play the game and make a play button</p>
 
-    <button><Link to='/game'>PLAY!</Link></button>
+    <Link to='/game'>PLAY!</Link>
   </div>
 }
