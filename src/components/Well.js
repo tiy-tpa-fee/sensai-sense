@@ -63,8 +63,6 @@ class Well extends React.Component {
       })
     } else {
       // Handle regular drag
-      console.log(event.clientX, this.state.origin.x)
-
       this.setState({
         position: {
           x: event.clientX - this.state.origin.x,

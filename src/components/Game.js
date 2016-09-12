@@ -57,7 +57,10 @@ class Game extends React.Component {
         <Cup color={move.guess[2]} />
         <Cup color={move.guess[3]} />
         <div className='pegs'>
-          TODO
+          <div className={move.result[0]} />
+          <div className={move.result[1]} />
+          <div className={move.result[2]} />
+          <div className={move.result[3]} />
         </div>
       </div>
     })

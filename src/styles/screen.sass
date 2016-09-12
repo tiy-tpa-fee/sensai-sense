@@ -172,6 +172,22 @@ footer
       filter: brightness(120%)
 
   .pegs
+    display: flex
+    flex-wrap: wrap
+    .inexact_match, .miss, .exact_match
+      height: 50%
+      width: 50%
+      background-repeat: no-repeat
+      background-position: center
+    .inexact_match
+      background-image: url('../images/white-tag.svg')
+    .miss
+      background-image: url('../images/no-tag.svg')
+      background-size: 18%
+      background-position: center 9%
+    .exact_match
+      background-image: url('../images/red-tag.svg')
+
 
   .go
     button
