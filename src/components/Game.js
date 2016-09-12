@@ -57,17 +57,8 @@ class Game extends Component {
       const { moves } = this.state
       const matches = moves[moves.length - 1].result.filter((result) => result === 'exact_match')
       if (matches.length === 4) {
-        let currScore = this.state.leaderScores.slice()
-        currScore.push({
-          guesses: this.state.numGuesses,
-          player: this.state.currentPlayer
-        })
         this.setState({
-          won: true,
-          leaderScores: currScore
-        }, () => {
-          let newScores = JSON.stringify(this.state.leaderScores)
-          window.localStorage.setItem('scoreArray', newScores)
+          won: true
         })
       }
     }))
@@ -81,7 +72,17 @@ class Game extends Component {
     let input = document.getElementById('score-info')
     this.setState({
       currentPlayer: input.elements[0].value
-    }, () => console.log(this.state.currentPlayer))
+    }, () => {
+      let currScore = this.state.leaderScores.slice()
+      currScore.push({
+        guesses: this.state.numGuesses,
+        player: this.state.currentPlayer
+      })
+      this.setState({ leaderScores: currScore }, () => {
+        let newScores = JSON.stringify(this.state.leaderScores)
+        window.localStorage.setItem('scoreArray', newScores)
+      })
+    })
   }
   render () {
     const { moves, currentMove, won, numGuesses } = this.state
