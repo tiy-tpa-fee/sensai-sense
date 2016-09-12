@@ -54,8 +54,6 @@ footer
   background-color: $brown
   color: $beige
 
-$sprite-size: 16vw
-
 .color-well
   display: flex
   align-items: center
@@ -98,32 +96,6 @@ $sprite-size: 16vw
     animation: active 0.5s infinite step-end
     pointer-events: none
 
-@keyframes grow
-  from
-    transform: scale(0)
-  to
-    transform: scale(1)
-
-@keyframes idle
-  0%
-    background-position: (-$sprite-size) (-$sprite-size)
-  33%
-    background-position: (-$sprite-size)*2 (-$sprite-size)
-  66%
-    background-position: (-$sprite-size)*3 (-$sprite-size)
-
-@keyframes active
-  0%
-    background-position: 0 0
-  20%
-    background-position: (-$sprite-size) 0
-  40%
-    background-position: (-$sprite-size)*2 0
-  60%
-    background-position: (-$sprite-size)*3 0
-  80%
-    background-position: 0 (-$sprite-size)
-
 .game
   position: absolute
   top: 0
@@ -139,6 +111,35 @@ $sprite-size: 16vw
 
   .cup, .pegs, .go
     width: 20vw
+
+  .go
+    background:
+      image: url('../images/go-button-inactive.svg')
+      position: center
+      repeat: no-repeat
+      size: 66%
+
+    button
+      border: none
+      color: transparent
+      opacity: 0
+      transition: all 200ms ease-in-out
+      background:
+        color: transparent
+        image: url('../images/go-button-active.svg')
+        position: center
+        repeat: no-repeat
+        size: 66%
+
+      &:hover
+        animation: go 400ms infinite ease-in-out
+        animation-direction: alternate
+        cursor: pointer
+
+      &:active
+        animation: none
+        opacity: 1
+        transform: rotateZ(15deg)
 
   .cup
     position: relative
