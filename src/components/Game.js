@@ -3,11 +3,11 @@ import React from 'react'
 import { Cup, Well } from '.'
 
 class Game extends React.Component {
-
   constructor () {
     super()
     this.state = {
-      currentMove: []
+      currentMove: [],
+      moves: []
     }
   }
 
@@ -35,30 +35,41 @@ class Game extends React.Component {
     }).then((response) => response.json())
     .then((data) => {
       this.setState({
-        id: data.id,
-        moves: data.moves
+        moves: data.moves,
+        currentMove: []
       })
     })
   }
 
+  _setColor = (color, id) => {
+    let move = this.state.currentMove.slice()
+    move[id] = color
+    this.setState({
+      currentMove: move
+    })
+  }
+
   render () {
-    return <div className='game'>
-      <div className='previous'>
-        <div className='turn'>
-          <Cup color='aqua' />
-          <Cup />
-          <Cup />
-          <Cup />
-          <div className='pegs'>
-            TODO
-          </div>
+    const turns = this.state.moves.map((move, index) => {
+      return <div className='turn' key={index}>
+        <Cup color={move.guess[0]} />
+        <Cup color={move.guess[1]} />
+        <Cup color={move.guess[2]} />
+        <Cup color={move.guess[3]} />
+        <div className='pegs'>
+          TODO
         </div>
       </div>
+    })
+    return <div className='game'>
+      <div className='previous'>
+        {turns}
+      </div>
       <div className='current turn'>
-        <Cup droppable />
-        <Cup droppable />
-        <Cup droppable />
-        <Cup droppable />
+        <Cup droppable id={0} setColor={this._setColor} color={this.state.currentMove[0]} />
+        <Cup droppable id={1} setColor={this._setColor} color={this.state.currentMove[1]} />
+        <Cup droppable id={2} setColor={this._setColor} color={this.state.currentMove[2]} />
+        <Cup droppable id={3} setColor={this._setColor} color={this.state.currentMove[3]} />
         <div className='go'>
           <button onClick={this._submitTurn}>Go</button>
         </div>

@@ -7,13 +7,14 @@ class Cup extends React.Component {
 
   static propTypes = {
     color: React.PropTypes.string,
-    droppable: React.PropTypes.bool
+    droppable: React.PropTypes.bool,
+    setColor: React.PropTypes.func,
+    id: React.PropTypes.number
   }
 
   constructor (props) {
     super(props)
     this.state = {
-      color: this.props.color,
       highlight: false
     }
   }
@@ -39,9 +40,9 @@ class Cup extends React.Component {
   _handleDrop = (event) => {
     const color = event.dataTransfer.getData('text/plain')
     this.setState({
-      highlight: false,
-      color: color
+      highlight: false
     })
+    this.props.setColor(color, this.props.id)
     // Prevent some browsers from trying to treat the dropped color
     // as a link.
     event.preventDefault()
@@ -49,8 +50,8 @@ class Cup extends React.Component {
 
   render () {
     let color, front
-    if (this.state.color) {
-      color = <div className={cx('color', this.state.color)} />
+    if (this.props.color) {
+      color = <div className={cx('color', this.props.color)} />
     }
     if (this.props.droppable) {
       front = <div
