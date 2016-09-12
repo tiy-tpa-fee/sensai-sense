@@ -74,7 +74,7 @@ $sprite-size: 16vw
   background-image: url('../images/color-sprites.svg')
   background-repeat: no-repeat
   background-size: $sprite-size*4 $sprite-size*2
-  animation: idle 0.5s infinite step-end
+  animation: active 0.5s infinite step-end
 
   &.green
     filter: hue-rotate(0deg)
@@ -106,31 +106,23 @@ $sprite-size: 16vw
 
 @keyframes idle
   0%
-    background-position-x: -$sprite-size
-    background-position-y: -$sprite-size
+    background-position: (-$sprite-size) (-$sprite-size)
   33%
-    background-position-x: -$sprite-size*2
-    background-position-y: -$sprite-size
+    background-position: (-$sprite-size)*2 (-$sprite-size)
   66%
-    background-position-x: -$sprite-size*3
-    background-position-y: -$sprite-size
+    background-position: (-$sprite-size)*3 (-$sprite-size)
 
 @keyframes active
   0%
-    background-position-x: 0
-    background-position-y: 0
+    background-position: 0 0
   20%
-    background-position-x: -$sprite-size
-    background-position-y: 0
+    background-position: (-$sprite-size) 0
   40%
-    background-position-x: -$sprite-size*2
-    background-position-y: 0
+    background-position: (-$sprite-size)*2 0
   60%
-    background-position-x: -$sprite-size*3
-    background-position-y: 0
+    background-position: (-$sprite-size)*3 0
   80%
-    background-position-x: 0
-    background-position-y: -$sprite-size
+    background-position: 0 (-$sprite-size)
 
 .game
   position: absolute
