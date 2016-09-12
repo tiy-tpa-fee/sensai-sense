@@ -42,6 +42,9 @@ class Cup extends React.Component {
       highlight: false,
       color: color
     })
+    // Prevent some browsers from trying to treat the dropped color
+    // as a link.
+    event.preventDefault()
   }
 
   render () {
