@@ -149,10 +149,10 @@ $sprite-size: 16vw
     flex-direction: column
     align-items: center
     justify-content: center
-    width: 80vw
-    height: 100000vh
+    width: auto
+    height: auto
     text-align: center
-    font-size: 4em
+    font-size: 2em
     background-color: darken($orange, 20%)
     color: black
     text-shadow: 5px 5px 5px $beige
@@ -160,6 +160,22 @@ $sprite-size: 16vw
     transition: 1s ease-in
     border-radius: 10px
     margin: 100px auto
+    padding: 30px
+    position: absolute
+    top: 0vh
+    bottom: 100%vh
+    left: 25vw
+    right: 25vw
+    z-index: 100
+
+    h2
+      height: auto
+      width: auto
+      position: relative
+      margin-bottom: 0
+    p
+      font-size: .5em
+      margin: 0 auto
 
     .reset
       background-color: $beige

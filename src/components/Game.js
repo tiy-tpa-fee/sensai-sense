@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Cup from './Cup'
 import Well from './Well'
+import { Link } from 'react-router'
 const GAME_URL = 'https://sensei-sense-api.herokuapp.com/'
 const TOKEN = 'access_token=brett'
 const CUPS = [0, 1, 2, 3]
@@ -16,7 +17,8 @@ class Game extends Component {
       currentMove: [],
       won: false,
       numGuesses: 0,
-      leaderScores: scores
+      leaderScores: scores,
+      currentPlayer: 'anonymous'
     }
   }
 
@@ -56,7 +58,10 @@ class Game extends Component {
       const matches = moves[moves.length - 1].result.filter((result) => result === 'exact_match')
       if (matches.length === 4) {
         let currScore = this.state.leaderScores.slice()
-        currScore.push(this.state.numGuesses)
+        currScore.push({
+          guesses: this.state.numGuesses,
+          player: this.state.currentPlayer
+        })
         this.setState({
           won: true,
           leaderScores: currScore
@@ -67,16 +72,29 @@ class Game extends Component {
       }
     }))
   }
+
   reset () {
     window.location.reload()
   }
+
+  receiveInput = () => {
+    let input = document.getElementById('score-info')
+    this.setState({
+      currentPlayer: input.elements[0].value
+    }, () => console.log(this.state.currentPlayer))
+  }
   render () {
-    const { moves, currentMove, won } = this.state
+    const { moves, currentMove, won, numGuesses } = this.state
     return <div className='game'>
       <div className='score'><p>Guesses: {this.state.numGuesses}</p></div>
       <div className={`modal-${won}`}>
         <h2>YOU WIN!</h2>
-        <button className='reset' onClick={this.reset}>PLAY AGAIN</button>
+        <p>You took {numGuesses} guesses to win</p>
+        <form id='score-info'>
+          <p>Enter Your Name:</p><input type='text' name='fname' ref='fname' placeholder='name' /><br />
+          <input type='button' onClick={this.receiveInput} value='Submit' />
+        </form>
+        <Link to='/'><button className='reset'>PLAY AGAIN</button></Link>
       </div>
       <div className='previous'>
       {moves.map((prevTurn, i) => {
